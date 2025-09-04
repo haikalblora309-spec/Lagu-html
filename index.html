@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>haikal.html</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: left;
+      font-family: sans-serif;
+      padding: 30px;
+    }
+    .line {
+      font-size: 18px;
+      margin: 15px 0;
+      opacity: 0.3;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .highlight {
+      color: white;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Karaoke: Surat Cinta untuk Starla </h1>
+  <audio id="audio" controls>
+    <source src="surat_cinta_untuk_starla.mp3" type="audio/mpeg">
+    Browser tidak mendukung audio.
+  </audio>
+
+  <div id="lyrics">
+    <div class="line" data-time="23">Kutuliskan kenangan tentang</div>
+    <div class="line" data-time="26">Caraku menemukan dirimu</div>
+    <div class="line" data-time="32">Tentang apa yang membuatku mudah</div>
+    <div class="line" data-time="37">Berikan hatiku padamu</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="42">Takkan habis sejuta lagu</div>
+    <div class="line" data-time="47">Untuk menceritakan cantikmu</div>
+    <div class="line" data-time="52">Kan teramat panjang puisi</div>
+    <div class="line" data-time="57">Tuk menyuratkan cinta ini</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="62">Telah habis sudah cinta ini</div>
+    <div class="line" data-time="66">Tak lagi tersisa untuk dunia</div>
+    <div class="line" data-time="71">Karena telah kuhabiskan</div>
+    <div class="line" data-time="74">Sisa cintaku hanya untukmu</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="87">Aku pernah berpikir tentang</div>
+    <div class="line" data-time="92">Hidupku tanpa ada dirimu</div>
+    <div class="line" data-time="98">Dapatkah lebih indah dari</div>
+    <div class="line" data-time="102">Yang ku jalani sampai kini</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="108">Aku selalu bermimpi tentang</div>
+    <div class="line" data-time="112">Indah hari tua bersamamu</div>
+    <div class="line" data-time="118">Tetap cantik rambut panjangmu</div>
+    <div class="line" data-time="122">meski nanti tak hitam lagi</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="127">Bila habis sudah waktu ini</div>
+    <div class="line" data-time="131">Tak lagi berpijak pada dunia</div>
+    <div class="line" data-time="136">Telah aku habiskan</div>
+    <div class="line" data-time="139">Sisa hidupku hanya untukmu</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="146">Dan telah habis sudah cinta ini</div>
+    <div class="line" data-time="151">Tak lagi tersisa untuk dunia</div>
+    <div class="line" data-time="156">Karena telah kuhabiskan</div>
+    <div class="line" data-time="159">Sisa cintaku hanya untukmu</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="166">Untukmu hidup dan matiku</div>
+    <div class="line" data-time="181">Bila musim berganti</div>
+    <div class="line" data-time="186">Sampai waktu terhenti</div>
+    <div class="line" data-time="191">Walau dunia membenci</div>
+    <div class="line" data-time="196">Ku kan tetap di sini</div>
+   <div clasa="line">-            -</div>
+    <div class="line" data-time="201">Bila habis sudah waktu ini</div>
+    <div class="line" data-time="206">Tak lagi berpijak pada dunia</div>
+    <div class="line" data-time="211">Telah aku habiskan</div>
+    <div class="line" data-time="214">Sisa hidupku hanya untukmu</div>
+    <div clasa="line">-            -</div>
+    <div class="line" data-time="221">Dan telah habis sudah cinta ini</div>
+    <div class="line" data-time="226">Tak lagi tersisa untuk dunia</div>
+    <div class="line" data-time="231">Karena telah kuhabiskan</div>
+    <div class="line" data-time="234">Sisa cintaku hanya untukmu</div>
+    <div class="line" data-time="241">Karena telah kuhabiskan</div>
+    <div class="line" data-time="244">Sisa cintaku hanya untukmu</div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const lines = document.querySelectorAll('.line');
+
+    audio.ontimeupdate = () => {
+      const currentTime = audio.currentTime;
+      lines.forEach((line, index) => {
+        const start = parseFloat(line.dataset.time);
+        const end = index < lines.length - 1
+          ? parseFloat(lines[index + 1].dataset.time)
+          : Number.MAX_VALUE;
+        line.classList.toggle('highlight', currentTime >= start && currentTime < end);
+      });
+    };
+  </script>
+</body>
+</html>
